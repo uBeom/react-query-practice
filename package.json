@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-query-practice",
   "version": "1.0.0",
-  "description": "react-boilerplate",
+  "description": "react-query-practice",
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve --env=dev",
@@ -56,6 +56,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.1",
     "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.5",
     "styled-reset": "^4.4.2"
