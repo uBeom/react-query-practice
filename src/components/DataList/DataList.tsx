@@ -17,14 +17,19 @@ const fetchPracticeData = async () => {
 
 const DataList = () => {
   const [count, setCount] = useState(0);
-  const { data } = useQuery<Practice>(['practice'], fetchPracticeData, {
-    cacheTime: 5000,
-    staleTime: 2000,
-  });
+  const { data, isLoading, isFetching } = useQuery<Practice>(
+    ['practice'],
+    fetchPracticeData,
+    {
+      cacheTime: 5000,
+      staleTime: 2000,
+    },
+  );
 
   const handleClickButton = () => setCount(prev => prev + 1);
 
   console.log(data);
+  console.log(isLoading, isFetching);
 
   return (
     <div>
