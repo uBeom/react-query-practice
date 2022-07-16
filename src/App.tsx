@@ -2,6 +2,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+import DataList from '@/components/DataList/DataList';
+import DataListCopy from '@/components/DataListCopy/DataListCopy';
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -20,7 +23,10 @@ const App = () => {
         }}
         position='bottom-right'
       />
-      <div>App</div>
+      <div>
+        <DataList />
+        <DataListCopy />
+      </div>
     </QueryClientProvider>
   );
 };
