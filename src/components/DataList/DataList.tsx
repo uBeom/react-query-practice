@@ -17,16 +17,20 @@ const fetchPracticeData = async () => {
 
 const DataList = () => {
   const [count, setCount] = useState(0);
-  const { data, isLoading, isFetching } = useQuery<Practice>(
+  const { data, isLoading, isFetching, refetch } = useQuery<Practice>(
     ['practice'],
     fetchPracticeData,
     {
       cacheTime: 5000,
       staleTime: 2000,
+      enabled: false,
     },
   );
 
-  const handleClickButton = () => setCount(prev => prev + 1);
+  const handleClickButton = () => {
+    setCount(prev => prev + 1);
+    refetch();
+  };
 
   console.log(data);
   console.log(isLoading, isFetching);
