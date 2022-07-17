@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
 interface Practice {
@@ -8,7 +8,7 @@ interface Practice {
   completed: boolean;
 }
 
-const fetchPracticeData = async () => {
+const fetchPracticeData = async (): Promise<Practice> => {
   const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
   const data = await res.json();
 
@@ -17,15 +17,23 @@ const fetchPracticeData = async () => {
 
 const DataList = () => {
   const [count, setCount] = useState(0);
-  const { data, isLoading, isFetching, refetch } = useQuery<Practice>(
+  const { data, isLoading, isFetching, refetch } = useQuery(
     ['practice'],
     fetchPracticeData,
     {
       cacheTime: 5000,
       staleTime: 2000,
       enabled: false,
+      refetchOnMount: false,
     },
   );
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('useEffetch에서 요청');
+      refetch();
+    }, 5000);
+  }, []);
 
   const handleClickButton = () => {
     setCount(prev => prev + 1);
